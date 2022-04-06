@@ -1,8 +1,15 @@
-export const fetchConfig = (method, reqBody = {}) => {
+// create a config and url to fetch data from api
+export const fetchConfig = (route, method, reqBody = {}, token = null) => {
+  const baseUrl = "http://localhost:3380/";
+  const url = baseUrl + route;
+  
   const headers = new Headers();
   headers.append("Content-Type", "application/json");
 
-  const fetchConfig = {         
+  if(token) 
+    headers.append("Authorizarion", `Bearer ${token}`);
+  
+  const options = {         
     method,
     headers,
     body: JSON.stringify({
@@ -10,5 +17,5 @@ export const fetchConfig = (method, reqBody = {}) => {
     })
   }
 
-  return fetchConfig;
+  return { url, options };
 }

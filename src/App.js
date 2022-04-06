@@ -1,4 +1,5 @@
-import LoginPage from "./LoginPage/LoginPage";
+import Login from "./Login";
+import Register from './Register';
 import { useSelector } from 'react-redux';
 
 function App() {
@@ -7,7 +8,13 @@ function App() {
 
   return (
     <div className="App">      
-      <LoginPage />
+      <Login />
+      <p>Register</p>
+      <div>
+        <Register />
+      </div>
+      {state.auth && <p>Logged</p>}
+      {state.loading && <p>loading...</p>}
     </div>
   );
 }
