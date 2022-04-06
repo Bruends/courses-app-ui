@@ -1,4 +1,4 @@
-// create a config and url to fetch data from api
+// create an object config with url and options to fetch data from api
 export const fetchConfig = (route, method, reqBody = {}, token = null) => {
   const baseUrl = "http://localhost:3380/";
   const url = baseUrl + route;

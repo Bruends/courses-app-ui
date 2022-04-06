@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { registerService } from '../services/auth';
+import { registerService } from '../services/authService';
 
 const defaultUser = {
     name: "",

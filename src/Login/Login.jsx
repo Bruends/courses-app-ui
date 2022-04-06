@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { loginService } from '../services/auth';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginService } from '../services/authService';
+import { Link, useNavigate } from 'react-router-dom';
 
 function LoginPage(){
     const [username, setUsername] = useState("");
@@ -25,6 +26,7 @@ function LoginPage(){
             >
                 Login
             </button>
+            <Link to='/' >Go Back</Link>
         </form>
     )
 }

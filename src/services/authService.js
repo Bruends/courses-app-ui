@@ -1,5 +1,6 @@
 import { authStart ,authToken , authError, authRegisterSuccess } from '../store/AuthSlice';
 import { fetchConfig } from '../util/apiUtils';
+import { setTokenInStorage, getTokenInStorage } from '../util/localStorage';
 
 export const loginService = (username, password) => {
   return async (dispatch) => {
@@ -17,10 +18,12 @@ export const loginService = (username, password) => {
       }
       
       if(res.status === 200) {
-        // dispatch data
+        // dispatch token
         const data = await res.json();
-        console.table(data);
-        dispatch(authToken(data));
+        dispatch(authToken(data.token));
+        //save token
+        setTokenInStorage(data.token);
+        
         return;
       }
 
@@ -49,7 +52,5 @@ export const registerService = (user) => {
       console.log(error);
       dispatch(authError, "erro ao criar conta");
     }
-
-
   }
 }
