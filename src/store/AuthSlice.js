@@ -32,9 +32,13 @@ const AuthSlice = createSlice({
       ...defaultState,      
       registered: true,
     }),
+
+    authLogout: (state, action) => ({
+      ...defaultState
+    })
   }
 });
 
-export const { authStart, authToken, authError, authRegisterSuccess } = AuthSlice.actions;
+export const { authStart, authToken, authError, authRegisterSuccess, authLogout } = AuthSlice.actions;
 
 export const reducer = AuthSlice.reducer;

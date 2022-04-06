@@ -1,33 +1,47 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginService } from '../services/authService';
 import { Link, useNavigate } from 'react-router-dom';
 
 function LoginPage(){
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const dispatch = useDispatch();
+  const [user, setUser] = useState({username: "", password: ""});  
+  const dispatch = useDispatch();
+  const state = useSelector(state => state);
+  const navigate = useNavigate();
 
-    return (
-        <form onSubmit={(event) => { event.preventDefault(); }}>
-            <input 
-                type="text" 
-                value={username} 
-                onChange={({ target }) => { setUsername(target.value)} }
-            />
-            <input 
-                type="password" 
-                value={password} 
-                onChange={({ target }) => { setPassword(target.value)} }
-            />
-            <button 
-                type="submit" 
-                onClick={() => { dispatch(loginService(username, password))} }
-            >
-                Login
-            </button>
-            <Link to='/' >Go Back</Link>
-        </form>
+  useEffect(() => {
+    if(state.auth)
+      navigate('/courses', { replace: true });
+  }, [state]);
+
+  function handleSubmit(event){
+    event.preventDefault();
+    dispatch(loginService(user));
+  }
+
+  return (
+    <form onSubmit={(event) => { handleSubmit(event) }}>
+      <input 
+        type="text" 
+        value={user.username} 
+        onChange={({ target }) => { 
+          setUser({ ...user, username: target.value})
+        }}
+      />
+      
+      <input 
+        type="password" 
+        value={user.password} 
+        onChange={({ target }) => { 
+          setUser({ ...user, password: target.value})
+        }}
+      />
+      
+      <button type="submit">
+        Login
+      </button>
+        <Link to='/' >Go Back</Link>
+    </form>
     )
 }
 

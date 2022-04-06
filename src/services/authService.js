@@ -1,16 +1,16 @@
 import { authStart ,authToken , authError, authRegisterSuccess } from '../store/AuthSlice';
 import { fetchConfig } from '../util/apiUtils';
-import { setTokenInStorage, getTokenInStorage } from '../util/localStorage';
+import { setTokenInStorage } from '../util/localStorage';
 
-export const loginService = (username, password) => {
+export const loginService = (user) => {
   return async (dispatch) => {
     try {
       dispatch(authStart());
       // configs to fetch      
-      const {url, options} = fetchConfig('auth/login', 'POST', {username, password}); 
+      const {url, options} = fetchConfig('auth/login', 'POST', {...user}); 
 
       // api request
-      const res  = await fetch(url, options);
+      const res = await fetch(url, options);
 
       if(res.status === 401) {
         dispatch(authError("usuário ou senha incorretos!"));
