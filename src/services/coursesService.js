@@ -29,3 +29,29 @@ export const getCoursesService = (token) => {
     }
   }
 }
+
+export const saveCourse = (course, token) => {
+  return async (dispatch) => {
+    try {
+      dispatch(fetchStart());
+    
+      // fetching courses
+      const { url, options } = fetchConfig('courses', 'POST', {...course}, token);
+      const res = await fetch(url, options);     
+
+      // if unauthorized, logout
+      if(res.status === 401) {
+        dispatch(logoutService());
+        return;
+      }
+
+      if(res.status === 201) {
+        dispatch(getCoursesService(token));
+        return;
+      }
+    } catch (error) {
+      console.log(error);
+      dispatch(fetchError("erro ao salvar curso"));
+    }
+  }
+}

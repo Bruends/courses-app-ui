@@ -1,8 +1,10 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { getTokenInStorage } from './util/localStorage';
 import { authToken } from './store/AuthSlice';
 import AppRoutes from './Routes';
 import { useEffect } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 function App() {  
   const token = getTokenInStorage();
   const dispatch = useDispatch();  
