@@ -1,6 +1,6 @@
-import { authStart ,authToken , authError, authRegisterSuccess } from '../store/AuthSlice';
+import { authStart ,authToken , authError, authRegisterSuccess, authLogout } from '../store/AuthSlice';
 import { fetchConfig } from '../util/apiUtils';
-import { setTokenInStorage } from '../util/localStorage';
+import { setTokenInStorage, removeToken } from '../util/localStorage';
 
 export const loginService = (user) => {
   return async (dispatch) => {
@@ -31,6 +31,13 @@ export const loginService = (user) => {
       console.log(error.message);
       dispatch(authError("erro ao logar"));
     }
+  }
+}
+
+export const logoutService = () => {
+  return (dispatch) => {
+    removeToken();
+    dispatch(authLogout());
   }
 }
 

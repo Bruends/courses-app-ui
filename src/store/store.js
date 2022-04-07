@@ -1,5 +1,8 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { reducer } from './AuthSlice';
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
+import { reducer as authReducer } from './AuthSlice';
+import { reducer as coursesReducer } from './FetchCoursesSlice';
+
+const reducer = combineReducers({authReducer, coursesReducer})
 
 const store = configureStore({reducer});
 

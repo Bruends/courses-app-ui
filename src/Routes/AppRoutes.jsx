@@ -1,9 +1,8 @@
 import { Routes, Route } from 'react-router-dom';
 import Login from '../Login';
 import Register from '../Register';
-import Landing from '../Landing'
-
-
+import Landing from '../Landing';
+import Courses from '../Courses';
 import ProtectedRoute from './ProtectedRoute';
 
 function AppRoutes() {
@@ -15,7 +14,7 @@ function AppRoutes() {
         path='courses'
         element={
           <ProtectedRoute>
-            <div>courses</div>
+            <Courses />
           </ProtectedRoute>   
         }
       />

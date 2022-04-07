@@ -6,7 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 function LoginPage(){
   const [user, setUser] = useState({username: "", password: ""});  
   const dispatch = useDispatch();
-  const state = useSelector(state => state);
+  const state = useSelector(state => state.authReducer);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -23,9 +23,9 @@ function LoginPage(){
     <form onSubmit={(event) => { handleSubmit(event) }}>
       <input 
         type="text" 
-        value={user.username} 
+        value={ user.username } 
         onChange={({ target }) => { 
-          setUser({ ...user, username: target.value})
+          setUser({ ...user, username: target.value });
         }}
       />
       
@@ -33,7 +33,7 @@ function LoginPage(){
         type="password" 
         value={user.password} 
         onChange={({ target }) => { 
-          setUser({ ...user, password: target.value})
+          setUser({ ...user, password: target.value});
         }}
       />
       
