@@ -1,60 +1,67 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { registerService } from '../services/authService';
+import { Form, Button, Stack } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
-const defaultUser = {
-    name: "",
-    username: "",
-    email: "",
-    password: "",
+function Register({user, setUser, handleSubmit}){
+  return (
+    <Form 
+      className="auth-form mx-auto p-5 mt-5 border border-primary rounded" 
+      onSubmit={(event) => { handleSubmit(event) }}
+    >
+      <h1 className="my-4"> Registrar:  </h1>
+      <Form.Group className="m-2" controlId="registerName">
+        <Form.Label>Nome: </Form.Label>
+        <Form.Control 
+          type="text" 
+          value={user.name} 
+          onChange={({ target }) => { 
+            setUser({...user, name: target.value}) 
+          }}
+          required
+        />
+      </Form.Group>
+
+      <Form.Group className="m-2" controlId="registerUsername">
+        <Form.Label>Username: </Form.Label>
+        <Form.Control 
+          type="text" 
+          value={user.username} 
+          onChange={({ target }) => { 
+            setUser({...user, username: target.value}) 
+          }}
+          required
+        />
+      </Form.Group>
+
+      <Form.Group className="m-2" controlId="registerEmail">
+        <Form.Label>Email: </Form.Label>
+        <Form.Control 
+          type="email" 
+          value={user.email} 
+          onChange={({ target }) => { 
+            setUser({...user, email: target.value}) 
+          }}
+          required
+        />
+      </Form.Group>
+
+      <Form.Group className="m-2" controlId="registerPassword">
+        <Form.Label>senha: </Form.Label>
+        <Form.Control 
+          type="email" 
+          value={user.password} 
+          onChange={({ target }) => { 
+            setUser({...user, password: target.value}) 
+          }}
+          required
+        />
+      </Form.Group>
+      
+      <Stack direction="horizontal" gap={3} className="mt-4">
+        <Button variant="primary" type="submit"> Register </Button>
+        <Link to='/login' >Já Possui uma conta ?</Link>
+      </Stack>
+    </Form>
+  )
 }
 
-function handleRegister(event, user, dispatch) {
-    event.preventDefault();
-    dispatch(registerService(user));
-}
-
-function RegisterPage(){
-    const [user, setUser] = useState(defaultUser);
-    const dispatch = useDispatch();
-
-    return (
-        <form onSubmit={(event) => { handleRegister(event, user, dispatch) }}>
-            <input 
-                type="text" 
-                value={user.name} 
-                onChange={({ target }) => { 
-                    setUser({...user, name: target.value}) 
-                }}
-            />
-            <input 
-                type="text" 
-                value={user.username} 
-                onChange={({ target }) => { 
-                    setUser({...user, username: target.value}) 
-                }}
-                minLength="3"
-            />
-            <input 
-                type="email" 
-                value={user.email} 
-                onChange={({ target }) => { 
-                    setUser({...user, email: target.value})
-                }}
-                required
-            />
-            <input 
-                type="password"
-                value={user.password} 
-                onChange={({ target }) => { 
-                    setUser({...user, password: target.value}) 
-                }}
-                minLength="8"
-                required
-            />
-            <button type="submit"> Register </button>
-        </form>
-    )
-}
-
-export default RegisterPage;
+export default Register;

@@ -5,7 +5,7 @@ function LoginPage({ handleSubmit, user, setUser }){
   
   return (
     <Form       
-      className="auth-form mx-auto p-5 mt-5 bg-dark text-white" 
+      className="auth-form mx-auto p-5 mt-5 border border-primary rounded" 
       onSubmit={(event) => { handleSubmit(event) }}
     >
       <h1 className="my-4"> Login </h1>

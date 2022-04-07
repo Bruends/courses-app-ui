@@ -18,8 +18,7 @@ export const getCoursesService = (token) => {
       }
 
       if(res.status === 200) {
-        const data = await res.json();
-        console.log(data);
+        const data = await res.json();        
         dispatch(fetchSuccess(data));
       }
 

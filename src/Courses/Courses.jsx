@@ -1,33 +1,15 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { logoutService } from '../services/authService';
-import { getTokenInStorage } from '../util/localStorage';
-import { useEffect } from 'react';
-import { getCoursesService } from '../services/coursesService';
-import CourseCard  from '../components/CourseCard'
-import SaveCourse from '../SaveCourse/SaveCourse';
+import CourseCard  from '../components/CourseCard';
+import { Stack } from 'react-bootstrap';
 
-function Courses() {
-  const { coursesReducer: state } = useSelector(state => state);
-  const token = getTokenInStorage();
-  const dispatch = useDispatch();
-
-  console.log(state);
-
-  useEffect(() => {
-    dispatch(getCoursesService(token));
-  }, [])
-
-  function handleLogout() {
-    dispatch(logoutService());
-  }
-
+function Courses({ courses, logout }) {
   return (
     <div>
-      {state.courses && 
-        state.courses.map((c, i) => <CourseCard key={i} course={c} />) 
-      }
-      <SaveCourse />
-      <button onClick={ handleLogout }>Logout</button>
+      <Stack direction='horizontal' gap={5}>
+        {courses && 
+          courses.map((c, i) => <CourseCard key={i} course={c} />) 
+        }      
+      </Stack>
+      <button onClick={ logout }>Logout</button>
     </div>
   );
 }
