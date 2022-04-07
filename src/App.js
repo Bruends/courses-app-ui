@@ -3,7 +3,9 @@ import { getTokenInStorage } from './util/localStorage';
 import { authToken } from './store/AuthSlice';
 import AppRoutes from './Routes';
 import { useEffect } from 'react';
+import { Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+// import './App.scss';
 
 function App() {  
   const token = getTokenInStorage();
@@ -16,7 +18,9 @@ function App() {
   }, []);
 
   return (
-    <AppRoutes />
+    <Container>
+      <AppRoutes />
+    </Container>
   );
 }
 
