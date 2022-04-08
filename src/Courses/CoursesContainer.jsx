@@ -1,12 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { logoutService } from '../services/authService';
 import { getTokenInStorage } from '../util/localStorage';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { getCoursesService } from '../services/coursesService';
+import { openDelModal, closeModals, openAddModal } from '../store/ModalSlice';
 import Courses from './Courses';
 
 function CoursesContainer() {
-  const { coursesReducer: state } = useSelector(state => state);
+  const [showNew, setShowNew] = useState(false);  
+  const { coursesReducer, modalReducer } = useSelector(state => state);
   const token = getTokenInStorage();
   const dispatch = useDispatch();  
 
@@ -14,12 +15,26 @@ function CoursesContainer() {
     dispatch(getCoursesService(token));
   }, [])
 
-  function logout() {
-    dispatch(logoutService());
+  function deleteModal(id) {
+    dispatch(openDelModal(id, token));
+  }
+
+  function addModal() {
+    dispatch(openAddModal());
+  }
+
+  function closeAllModals() {
+    dispatch(closeModals(openAddModal()));
   }
 
   return (
-    <Courses logout={logout} courses={state.courses}/>
+    <Courses 
+      courses={coursesReducer.courses}
+      modal={modalReducer}
+      openAdd={addModal}
+      openDel={deleteModal}
+      closeAllModals={closeAllModals}
+    />
   );
 }
 

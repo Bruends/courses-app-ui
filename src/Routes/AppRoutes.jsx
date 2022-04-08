@@ -1,21 +1,19 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Login from '../Login';
 import Register from '../Register';
-import Landing from '../Landing';
 import Courses from '../Courses';
 import ProtectedRoute from './ProtectedRoute';
-import NewCourse from '../NewCourse';
 
 function AppRoutes() {
   return(
     <Routes>
-      <Route path='/' element={<Landing/>} />
+      <Route path='/' element={<Navigate to="/courses" replace/>} />
       
       {/* auth routes */}
       <Route  path='login' element={<Login />}/>
       <Route  path='register' element={<Register />}/>
 
-      {/* course routes */}      
+      {/* course routes */}
       <Route path='courses'>
         <Route
           index
@@ -25,16 +23,7 @@ function AppRoutes() {
               <Courses />
             </ProtectedRoute>  
           }
-        />
-          {/* nested routes on Course */}
-          <Route
-            path='new'
-            element={
-              <ProtectedRoute>
-                <NewCourse />
-              </ProtectedRoute>  
-            }
-          />
+        />         
       </Route>
 
       {/* 404 */}

@@ -57,3 +57,30 @@ export const saveCourse = (course, token) => {
     }
   }
 }
+
+export const deleteCourse = (id, token) => {
+  return async (dispatch) => {
+    try {
+      dispatch(fetchStart());
+    
+      // fetching courses
+      const { url, options } = fetchConfig(`courses/${id}`, 'DELETE', null, token);
+      const res = await fetch(url, options);     
+
+      // if unauthorized, logout
+      if(res.status === 401) {
+        dispatch(logoutService());
+        return;
+      }
+
+      if(res.status === 200) {
+        dispatch(getCoursesService(token));
+        toast.success('curso deletado com sucesso!');
+        return;
+      }
+    } catch (error) {
+      console.log(error);
+      dispatch(fetchError("erro ao Deletar curso"));
+    }
+  }
+}
