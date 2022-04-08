@@ -34,4 +34,4 @@ const FetchCourses = createSlice({
 
 export const {fetchStart, fetchSuccess, fetchError} = FetchCourses.actions;
 
-export const reducer = FetchCourses.reducer;
+export const coursesReducer = FetchCourses.reducer;

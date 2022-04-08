@@ -3,8 +3,11 @@ import { getTokenInStorage } from './util/localStorage';
 import { authToken } from './store/AuthSlice';
 import AppRoutes from './Routes';
 import { useEffect } from 'react';
-import { Container } from 'react-bootstrap';
+import { ToastContainer, toast } from 'react-toastify';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 // import './App.scss';
 
 function App() {  
@@ -18,9 +21,20 @@ function App() {
   }, []);
 
   return (
-    <Container>
-      <AppRoutes />
-    </Container>
+    <>
+    <AppRoutes />
+    <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+    </>
   );
 }
 

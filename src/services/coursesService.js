@@ -1,6 +1,7 @@
 import { fetchStart, fetchSuccess, fetchError } from '../store/FetchCoursesSlice';
 import { logoutService } from './authService';
 import { fetchConfig } from '../util/apiUtils';
+import { toast } from 'react-toastify';
 
 export const getCoursesService = (token) => {
   return async (dispatch) => {
@@ -13,7 +14,7 @@ export const getCoursesService = (token) => {
 
       // if unauthorized, logout
       if(res.status === 401) {
-        dispatch(logoutService());
+        dispatch(logoutService());        
         return;
       }
 
@@ -25,6 +26,7 @@ export const getCoursesService = (token) => {
     } catch (error) {
       console.error(error);
       dispatch(fetchError("erro ao listar cursos"));
+      toast.error("Erro, tente novamente mais tarde :(");
     }
   }
 }
@@ -46,6 +48,7 @@ export const saveCourse = (course, token) => {
 
       if(res.status === 201) {
         dispatch(getCoursesService(token));
+        toast.success('curso salvo com sucesso!');
         return;
       }
     } catch (error) {

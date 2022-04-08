@@ -1,13 +1,29 @@
-import { Link } from 'react-router-dom'
+import {Container, Row, Col} from 'react-bootstrap';
+import Menu from '../components/Menu/Menu'
+import CourseCard from '../components/CourseCard';
+
+const courses = [
+  {name: 'CS-50x', link:'aa', category: 'tech'},
+  {name: 'Musica (youtube)', link:'aa', category: 'tech'},
+  {name: 'course', link:'aa', category: 'Cozinha'},
+  {name: 'course', link:'aa', category: 'Música'},
+  {name: 'course', link:'aa', category: 'outro'},
+]
 
 function Landing() {
   return (
-    <div>
-      <Link to='/'>landing</Link>
-      <Link to='login'>login</Link>
-      <Link to='courses'>cursos</Link>
-      <Link to='register'>registrar</Link>
-    </div>
+    <>
+      <Menu />
+      <Container>
+        <Row>
+          {courses.map((c, i) => (
+              <Col key={i} lg={4}>
+                <CourseCard key={i} course={c} />
+              </Col>
+          ))}
+        </Row>
+      </Container>
+    </>
   )
 }
 

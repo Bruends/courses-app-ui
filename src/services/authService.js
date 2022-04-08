@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import { authStart ,authToken , authError, authRegisterSuccess, authLogout } from '../store/AuthSlice';
 import { fetchConfig } from '../util/apiUtils';
 import { setTokenInStorage, removeToken } from '../util/localStorage';
@@ -14,6 +15,7 @@ export const loginService = (user) => {
 
       if(res.status === 401) {
         dispatch(authError("usuário ou senha incorretos!"));
+        toast.error("usuário ou senha incorretos!");
         return;
       }
       
@@ -23,12 +25,12 @@ export const loginService = (user) => {
         dispatch(authToken(data.token));
         //save token
         setTokenInStorage(data.token);
-        
         return;
       }
 
     } catch (error) {
       console.log(error.message);
+      toast.error("erro ao logar");
       dispatch(authError("erro ao logar"));
     }
   }
@@ -53,10 +55,12 @@ export const registerService = (user) => {
       // try to login if success
       if(res === 201) {
         dispatch(authRegisterSuccess());
+        toast.success("usuário registrado com sucesso!");
         return;
       }
     } catch (error) {
       console.log(error);
+      toast.error("erro ao criar usuário");
       dispatch(authError, "erro ao criar conta");
     }
   }

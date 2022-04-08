@@ -11,6 +11,7 @@ function NewCourse({ handleSubmit, course,  setCourse }) {
           onChange={({ target }) => { 
             setCourse({...course, name: target.value})
           }}
+          required
         />
       </Form.Group>
 
@@ -22,6 +23,7 @@ function NewCourse({ handleSubmit, course,  setCourse }) {
           onChange={({ target }) => { 
             setCourse({...course, category: target.value})
           }}
+          required
           />
       </Form.Group>
 
@@ -33,6 +35,7 @@ function NewCourse({ handleSubmit, course,  setCourse }) {
           onChange={({ target }) => { 
             setCourse({...course, link: target.value})
           }}
+          required
           />
       </Form.Group>
       <Button type="submit">Salvar</Button>

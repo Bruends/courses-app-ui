@@ -47,4 +47,4 @@ export const {
   authLogout,
 } = AuthSlice.actions;
 
-export const reducer = AuthSlice.reducer;
+export const authReducer = AuthSlice.reducer;
