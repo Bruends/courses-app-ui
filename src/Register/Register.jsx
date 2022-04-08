@@ -47,7 +47,7 @@ function Register({user, setUser, handleSubmit}){
       <Form.Group className="m-2" controlId="registerPassword">
         <Form.Label>senha: </Form.Label>
         <Form.Control 
-          type="email" 
+          type="password" 
           value={user.password} 
           onChange={({ target }) => { 
             setUser({...user, password: target.value}) 

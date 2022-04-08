@@ -1,9 +1,14 @@
-function CourseCard({course}) {
+import { Card } from 'react-bootstrap';
+
+function CourseCard({ course }) {
   return (
-    <div>
-      <h1>{ course.name }</h1>
-      <p>{ course.category }</p>
-    </div>
+    <Card>
+      <Card.Body>
+        <Card.Title>{ course.name }</Card.Title>
+        <Card.Text>{ course.category }</Card.Text>
+        <Card.Link href={course.link} target="_blank">Ir ao curso</Card.Link>
+      </Card.Body>
+    </Card>
   )
 }
 

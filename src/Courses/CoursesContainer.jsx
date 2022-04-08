@@ -19,7 +19,7 @@ function CoursesContainer() {
   }
 
   return (
-    <Courses handleLogout={logout} courses={state.courses}/>
+    <Courses logout={logout} courses={state.courses}/>
   );
 }
 

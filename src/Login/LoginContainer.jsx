@@ -11,7 +11,7 @@ function LoginContainer() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if(state.auth)
+    if(state.token)
       navigate('/courses', { replace: true });
   }, [state]);
 
