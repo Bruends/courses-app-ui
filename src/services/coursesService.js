@@ -58,6 +58,34 @@ export const saveCourse = (course, token) => {
   }
 }
 
+export const editCourse = (course, token) => {
+  return async (dispatch) => {
+    try {
+      dispatch(fetchStart());
+    
+      // fetching courses
+      const { url, options } = fetchConfig(`courses`, 'PUT', {...course}, token);
+      const res = await fetch(url, options);     
+
+      // if unauthorized, logout
+      if(res.status === 401) {
+        dispatch(logoutService());
+        return;
+      }
+
+      if(res.status === 200) {
+        dispatch(getCoursesService(token));
+        toast.success('curso editado com sucesso!');
+        return;
+      }
+    } catch (error) {
+      console.log(error);
+      dispatch(fetchError("erro ao editar curso"));
+    }
+  }
+}
+
+
 export const deleteCourse = (id, token) => {
   return async (dispatch) => {
     try {

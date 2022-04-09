@@ -7,7 +7,7 @@ import Modal from '../Modal';
 function DeleteModal(){
   const dispatch = useDispatch();
   const { modalReducer: modalState, authReducer } = useSelector(state => state);
-  const token = authReducer.token;
+  const { token } = authReducer;
 
   function handleDelete() {
     dispatch(deleteCourse(modalState.delId, token));

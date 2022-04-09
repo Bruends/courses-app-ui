@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getTokenInStorage } from '../util/localStorage';
 import { useEffect, useState } from 'react';
 import { getCoursesService } from '../services/coursesService';
-import { openDelModal, closeModals, openAddModal } from '../store/ModalSlice';
+import { openDelModal, closeModals, openAddModal, openEditModal } from '../store/ModalSlice';
 import Courses from './Courses';
 
 function CoursesContainer() {
@@ -13,14 +13,18 @@ function CoursesContainer() {
 
   useEffect(() => {
     dispatch(getCoursesService(token));
-  }, [])
+  }, []);
 
   function deleteModal(id) {
-    dispatch(openDelModal(id, token));
+    dispatch(openDelModal(id));
   }
 
   function addModal() {
     dispatch(openAddModal());
+  }
+
+  function editModal(id){
+    dispatch(openEditModal(id));
   }
 
   function closeAllModals() {
@@ -32,6 +36,7 @@ function CoursesContainer() {
       courses={coursesReducer.courses}
       modal={modalReducer}
       openAdd={addModal}
+      openEdt={editModal}
       openDel={deleteModal}
       closeAllModals={closeAllModals}
     />

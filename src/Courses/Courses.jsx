@@ -1,11 +1,11 @@
-import { Link } from 'react-router-dom';
 import {Container, Row, Col, Button, Stack} from 'react-bootstrap';
 import Menu from '../components/Menu/Menu'
 import CourseCard from '../components/CourseCard';
 import DeleteModal from '../components/DeleteModal';
 import AddModal from '../components/AddModal';
+import EditModal from '../components/EditModal';
 
-function Courses({ courses, modal, closeAllModals, openDel, openAdd }) {
+function Courses({ courses, closeAllModals, openDel, openAdd, openEdt }) {
   return (
     <main>
       <Menu />    
@@ -21,7 +21,7 @@ function Courses({ courses, modal, closeAllModals, openDel, openAdd }) {
         <Row>
           {courses && courses.map((c, i) => (
             <Col key={i} lg={4}>
-              <CourseCard key={i} remove={openDel} close={closeAllModals} course={c} />
+              <CourseCard key={i} remove={openDel} edit={openEdt} close={closeAllModals} course={c} />
             </Col>
           ))}
         </Row>
@@ -29,7 +29,7 @@ function Courses({ courses, modal, closeAllModals, openDel, openAdd }) {
       {/* modals */}
       <DeleteModal />
       <AddModal />
-      
+      <EditModal />      
     </main>
   );
 }

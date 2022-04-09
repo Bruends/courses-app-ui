@@ -10,10 +10,14 @@ function Menu() {
     <Navbar bg="dark" variant="dark" className="mb-4 p-2">
       <Container>
         <Navbar.Brand as={Link} to='/'>Courses</Navbar.Brand>
-        <Nav className="justify-content-end">          
-          <Nav.Link as={Link} to='courses'>Cursos</Nav.Link>
-          <Nav.Link as={Link} to='courses/new'>Novo Curso</Nav.Link>
-          <Nav.Link as={Button} variant="secondary" onClick={() => dispatch(logoutService())} >Logout</Nav.Link>          
+        <Nav className="justify-content-end"> 
+          <Nav.Link 
+            as={Button} 
+            variant="secondary" 
+            onClick={() => dispatch(logoutService())} 
+          >
+            Logout
+          </Nav.Link>          
         </Nav>
       </Container>
     </Navbar>
