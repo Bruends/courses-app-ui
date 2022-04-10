@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 function Register({user, setUser, handleSubmit}){
   return (
     <Form 
-      className="auth-form mx-auto p-5 mt-5 border border-primary rounded" 
+      className="auth-form bg-dark text-white mx-auto p-5 mt-4 border border-primary rounded" 
       onSubmit={(event) => { handleSubmit(event) }}
     >
-      <h1 className="my-4"> Registrar:  </h1>
-      <Form.Group className="m-2" controlId="registerName">
+      <h1 className="m-2 mb-4 text-white"> Registrar: </h1>
+      <Form.Group className="m-2 mb-4" controlId="registerName">
         <Form.Label>Nome: </Form.Label>
         <Form.Control 
           type="text" 
@@ -20,7 +20,7 @@ function Register({user, setUser, handleSubmit}){
         />
       </Form.Group>
 
-      <Form.Group className="m-2" controlId="registerUsername">
+      <Form.Group className="m-2 mb-4" controlId="registerUsername">
         <Form.Label>Username: </Form.Label>
         <Form.Control 
           type="text" 
@@ -32,7 +32,7 @@ function Register({user, setUser, handleSubmit}){
         />
       </Form.Group>
 
-      <Form.Group className="m-2" controlId="registerEmail">
+      <Form.Group className="m-2 mb-4" controlId="registerEmail">
         <Form.Label>Email: </Form.Label>
         <Form.Control 
           type="email" 
@@ -44,7 +44,7 @@ function Register({user, setUser, handleSubmit}){
         />
       </Form.Group>
 
-      <Form.Group className="m-2" controlId="registerPassword">
+      <Form.Group className="m-2 mb-4" controlId="registerPassword">
         <Form.Label>senha: </Form.Label>
         <Form.Control 
           type="password" 

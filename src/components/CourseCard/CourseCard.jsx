@@ -2,7 +2,7 @@ import { Card, ProgressBar, Stack, Button } from 'react-bootstrap';
 
 function CourseCard({ course, remove, edit }) {
   return (
-    <Card className="mb-4 rounded border border-secondary">
+    <Card className="mb-4 rounded border border-dark">
       <Card.Body>
         <Stack gap={4} direction='horizontal'>
           <div>
@@ -14,12 +14,12 @@ function CourseCard({ course, remove, edit }) {
                 { course.category }
               </small>
             </Card.Text>          
-            <Card.Link href={course.link} target="_blank">
+            <Card.Link href={ course.link } target="_blank">
               Continuar curso
             </Card.Link>
           </div>
         </Stack>
-        <ProgressBar now={60.5} variant="primary" className="mt-4" />
+        {/* <ProgressBar now={60.5} variant="primary" className="mt-4" /> */}
         <Stack direction='horizontal' gap={2} className="mt-4">
           <Button size="sm" onClick={() => edit(course.id)} className="ms-auto" variant="warning text-white">Editar</Button>
           <Button size="sm" onClick={() => remove(course.id)} variant="danger text-white">Deletar</Button>

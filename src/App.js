@@ -4,11 +4,9 @@ import { authToken } from './store/AuthSlice';
 import AppRoutes from './Routes';
 import { useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
-
-
-// import './App.scss';
+import './App.scss';
 
 function App() {  
   const token = getTokenInStorage();

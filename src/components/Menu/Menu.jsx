@@ -1,5 +1,5 @@
 import { Navbar, Container, Nav, Button } from 'react-bootstrap';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { logoutService } from '../../services/authService';
 
@@ -7,13 +7,13 @@ function Menu() {
   const dispatch = useDispatch();
 
   return(
-    <Navbar bg="dark" variant="dark" className="mb-4 p-2">
+    <Navbar className="bg-dark text-white p-3">
       <Container>
-        <Navbar.Brand as={Link} to='/'>Courses</Navbar.Brand>
+        <Navbar.Brand as={Link} to='/' className="text-white">Courses</Navbar.Brand>
         <Nav className="justify-content-end"> 
           <Nav.Link 
             as={Button} 
-            variant="secondary" 
+            variant="danger text-white" 
             onClick={() => dispatch(logoutService())} 
           >
             Logout
