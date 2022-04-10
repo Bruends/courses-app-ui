@@ -5,8 +5,9 @@ import DeleteModal from '../components/DeleteModal';
 import AddModal from '../components/AddModal';
 import EditModal from '../components/EditModal';
 import Loading from '../components/Loading';
+import Search from '../components/Search';
 
-function Courses({ courses, closeAllModals, openDel, openAdd, openEdt }) {
+function Courses({ courses, closeAllModals, openDel, openAdd, openEdt, search, setSearch }) {
   return (
     <main>
       <Menu />   
@@ -17,12 +18,16 @@ function Courses({ courses, closeAllModals, openDel, openAdd, openEdt }) {
             <h1 className='p-2'>
               Cursos:
             </h1>
+            {/* add button */}
             <Button className="ms-auto" variant='success' onClick={openAdd}>Novo Curso</Button>
+            {/* search bar */}
+            <Search setSearch={setSearch} search={search} />
           </Stack>
         </Container>
 
         {/* Loading */}
         <Loading />
+
         {/* courses */}
         <Container>
           <Row>

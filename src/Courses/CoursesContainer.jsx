@@ -6,15 +6,28 @@ import { openDelModal, closeModals, openAddModal, openEditModal } from '../store
 import Courses from './Courses';
 
 function CoursesContainer() {
-  const [showNew, setShowNew] = useState(false);  
+  const [search, setSearch] = useState('');  
   const { coursesReducer, modalReducer } = useSelector(state => state);
   const token = getTokenInStorage();
-  const dispatch = useDispatch();  
-
+  const dispatch = useDispatch();
+  let courses;
+  // getiing courses from api to store
   useEffect(() => {
     dispatch(getCoursesService(token));
   }, []);
 
+  // filter results by search
+  if(search && coursesReducer.courses) {   
+    const searchLower = search.toLocaleLowerCase(); 
+     courses = coursesReducer.courses.filter((c) => {
+      if(c.name.includes(search) || c.category.includes(search))
+        return c;
+    })
+  } else {
+     courses = coursesReducer.courses;
+  }
+
+  // === modal functions
   function deleteModal(id) {
     dispatch(openDelModal(id));
   }
@@ -30,15 +43,17 @@ function CoursesContainer() {
   function closeAllModals() {
     dispatch(closeModals(openAddModal()));
   }
-
+  // ===
   return (
     <Courses 
-      courses={coursesReducer.courses}
+      courses={courses}
       modal={modalReducer}
       openAdd={addModal}
       openEdt={editModal}
       openDel={deleteModal}
       closeAllModals={closeAllModals}
+      search={search}
+      setSearch={setSearch}
     />
   );
 }
