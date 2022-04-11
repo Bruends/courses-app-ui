@@ -17,6 +17,7 @@ function LoginPage({ handleSubmit, user, setUser }){
           onChange={({ target }) => { 
             setUser({ ...user, username: target.value });
           }}
+          required
         />
       </Form.Group>
       
@@ -28,6 +29,7 @@ function LoginPage({ handleSubmit, user, setUser }){
           onChange={({ target }) => { 
             setUser({ ...user, password: target.value});
           }}
+          required
         />
       </Form.Group>
       

@@ -25,12 +25,14 @@ const AuthSlice = createSlice({
 
     authError:  (state, action) => ({ 
       ...defaultState,
-      error: action.payload,      
+      error: action.payload, 
+      loading: false,     
     }),
 
     authRegisterSuccess: (state, action) => ({ 
       ...defaultState,      
       registered: true,
+      loading: false,
     }),
 
     authLogout: (state, action) => ({

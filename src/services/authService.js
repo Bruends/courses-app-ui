@@ -51,12 +51,23 @@ export const registerService = (user) => {
 
       // api request
       const res  = await fetch(url, options);
-
       // try to login if success
-      if(res === 201) {
+      if(res.status === 201) {
         dispatch(authRegisterSuccess());
         toast.success("usuário registrado com sucesso!");
         return;
+      }
+
+      // duplicate username or email errors
+      if(res.status === 400) {
+        const json = await res.json();
+        console.log(json);
+
+        if(json.msg) {
+          toast.error(json.msg);
+          dispatch(authError(json.msg));
+          return;
+        }
       }
     } catch (error) {
       console.log(error);
