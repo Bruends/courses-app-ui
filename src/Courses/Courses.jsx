@@ -10,8 +10,10 @@ import Search from '../components/Search';
 function Courses({ courses, closeAllModals, openDel, openAdd, openEdt, search, setSearch }) {
   return (
     <main>
+      {/* nav menu */}
       <Menu />   
        
+      {/* header */}
       <Container className="course-container mt-4 bg-white p-4 rounded">
         <Container>
           <Stack direction='horizontal' gap={3} className="mb-4">
@@ -19,7 +21,7 @@ function Courses({ courses, closeAllModals, openDel, openAdd, openEdt, search, s
               Cursos:
             </h1>
             {/* add button */}
-            <Button className="ms-auto" variant='success' onClick={openAdd}>Novo Curso</Button>
+            <Button className="ms-auto" variant='success' onClick={openAdd}>Novo</Button>
             {/* search bar */}
             <Search setSearch={setSearch} search={search} />
           </Stack>

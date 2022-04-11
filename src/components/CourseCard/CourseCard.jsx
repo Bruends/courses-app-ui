@@ -4,13 +4,13 @@ function CourseCard({ course, remove, edit }) {
   return (
     <Card className="mb-4 rounded border border-dark">
       <Card.Body>
-        <Stack gap={4} direction='horizontal'>
+        <Stack gap={1}>
           <div>
-            <Card.Title>{ course.name }</Card.Title>
+            <Card.Title className="text-center">{ course.name }</Card.Title>
           </div>
-          <div className="ms-auto">
+          <div className="mx-auto text-center">
             <Card.Text>
-              <small className='bg-secondary text-white p-1 px-2 rounded'>
+              <small className='text-muted rounded'>
                 { course.category }
               </small>
             </Card.Text>          

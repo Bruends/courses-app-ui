@@ -27,7 +27,7 @@ function AppRoutes() {
       </Route>
 
       {/* 404 */}
-      <Route path='*' element={<p> 404 </p>} />
+      <Route path='*' element={<Navigate to="/" replace/>} />
     </Routes>
   )
 }

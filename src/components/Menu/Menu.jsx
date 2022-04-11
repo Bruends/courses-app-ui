@@ -13,7 +13,8 @@ function Menu() {
         <Nav className="justify-content-end"> 
           <Nav.Link 
             as={Button} 
-            variant="danger text-white" 
+            variant="danger text-white"
+            size="sm" 
             onClick={() => dispatch(logoutService())} 
           >
             Logout
