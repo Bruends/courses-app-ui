@@ -4,22 +4,10 @@ import { Link } from 'react-router-dom';
 function Register({user, setUser, handleSubmit}){
   return (
     <Form 
-      className="auth-form bg-dark text-white mx-auto p-5 mt-4 border border-primary rounded" 
+      className="auth-form bg-light mx-auto p-5 mt-4 border border-primary rounded" 
       onSubmit={(event) => { handleSubmit(event) }}
     >
-      <h1 className="m-2 mb-4 text-white"> Registrar: </h1>
-      <Form.Group className="m-2 mb-4" controlId="registerName">
-        <Form.Label>Nome: </Form.Label>
-        <Form.Control 
-          type="text" 
-          value={user.name} 
-          onChange={({ target }) => { 
-            setUser({...user, name: target.value}) 
-          }}
-          required
-        />
-      </Form.Group>
-
+      <h1 className="m-2 mb-4"> Registrar: </h1>
       <Form.Group className="m-2 mb-4" controlId="registerUsername">
         <Form.Label>Username: </Form.Label>
         <Form.Control 

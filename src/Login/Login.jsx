@@ -5,10 +5,10 @@ function LoginPage({ handleSubmit, user, setUser }){
   
   return (
     <Form       
-      className="auth-form bg-dark text-white mx-auto p-5 mt-5 rounded" 
+      className="auth-form bg-light mx-auto p-5 mt-5 rounded" 
       onSubmit={(event) => { handleSubmit(event) }}
     >
-      <h1 className="my-4 text-white"> Login </h1>
+      <h1 className="my-4"> Login </h1>
       <Form.Group className="m-2" controlId="loginUsername">
         <Form.Label>Usename: </Form.Label>
         <Form.Control 

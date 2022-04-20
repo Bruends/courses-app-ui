@@ -9,7 +9,7 @@ import Search from '../components/Search';
 
 function Courses({ courses, closeAllModals, openDel, openAdd, openEdt, search, setSearch }) {
   return (
-    <main>
+    <main className='coursesContainer'>
       {/* nav menu */}
       <Menu />   
        

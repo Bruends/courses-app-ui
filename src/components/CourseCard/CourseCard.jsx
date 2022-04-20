@@ -1,4 +1,4 @@
-import { Card, ProgressBar, Stack, Button } from 'react-bootstrap';
+import { Card, Stack, Button } from 'react-bootstrap';
 
 function CourseCard({ course, remove, edit }) {
   return (
@@ -19,7 +19,7 @@ function CourseCard({ course, remove, edit }) {
             </Card.Link>
           </div>
         </Stack>
-        {/* <ProgressBar now={60.5} variant="primary" className="mt-4" /> */}
+        
         <Stack direction='horizontal' gap={2} className="mt-4">
           <Button size="sm" onClick={() => edit(course.id)} className="ms-auto" variant="warning text-white">Editar</Button>
           <Button size="sm" onClick={() => remove(course.id)} variant="danger text-white">Deletar</Button>

@@ -7,8 +7,7 @@ import AddCourse from "./AddModal";
 const defaultCourse = {
   name: "",
   link: "",
-  category: "",
-  total_lessons: 0,
+  category: "",  
 }
 
 function AddModalContainer() {
