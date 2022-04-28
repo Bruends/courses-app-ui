@@ -21,6 +21,13 @@ An app to keep track of your EAD courses.
 
 ## install and Run
 
+- install one of the apis  
+[PHP Version](https://github.com/Bruends/courses-php-api)
+or
+[NodeJS Version](https://github.com/Bruends/courses-app-api)
+
+
+
 - clone the repo
 
 - intall the dependencies
