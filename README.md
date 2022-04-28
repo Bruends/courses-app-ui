@@ -28,7 +28,10 @@ or
 
 
 
-- clone the repo
+- clone the repo:
+```bash
+git clone https://github.com/Bruends/courses-app-ui.git
+```
 
 - intall the dependencies
 ```
